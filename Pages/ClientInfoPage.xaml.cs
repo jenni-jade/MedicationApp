@@ -158,7 +158,9 @@ namespace MedicationApp.Pages
 
         private void View_Click(object s, RoutedEventArgs e)
         {
-
+            AddPatientModal modal = new AddPatientModal();
+            modal.ShowDialog();
+            GetPatients();
         }
 
         private void To_login(object sender, RoutedEventArgs e)

@@ -54,13 +54,7 @@
                     <DataGridTextColumn Header="Date of Birth" Binding="{Binding birth}"/>
                     <DataGridTextColumn Header="Height" Binding="{Binding height}"/>
                     
-                    <DataGridTemplateColumn Header="Delete Patient">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Delete" Click="Remove_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    
                     <DataGridTemplateColumn Header="View Patient">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -72,6 +66,13 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Edit" Click="Edit_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Delete Patient">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Click="Remove_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
