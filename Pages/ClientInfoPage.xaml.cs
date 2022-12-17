@@ -89,9 +89,12 @@ namespace MedicationApp.Pages
         {
             try
             {
-                Patient? chosenPatient = PatientChart.SelectedItem as Patient;
-                EditPatientModal modal = new EditPatientModal(chosenPatient);
-                modal.ShowDialog();
+                Patient chosenPatient = (sender as FrameworkElement).DataContext as Patient;
+                if (chosenPatient != null)
+                {
+                    EditPatientModal modal = new EditPatientModal(chosenPatient);
+                    modal.ShowDialog();
+                }
                 GetPatients();
             }
             catch (Exception exception)
@@ -166,6 +169,11 @@ namespace MedicationApp.Pages
         private void To_login(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Content = new Login();
+        }
+
+        private void ListViewItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,7 +31,7 @@ namespace MedicationApp.Pages
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new LandingPage("asdf");
+            Application.Current.MainWindow.Content = new LandingPage(username);
         }
 
         private void Mar_Click(object sender, RoutedEventArgs e)
@@ -45,8 +46,12 @@ namespace MedicationApp.Pages
 
         private void To_login(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("wasssup");
             Application.Current.MainWindow.Content = new Login();
+        }
+
+        private void Caregiver_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new CareGiverPage(this.username);
         }
     }
 }

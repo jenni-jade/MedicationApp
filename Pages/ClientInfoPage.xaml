@@ -10,75 +10,112 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0" VerticalAlignment="Stretch">
+        <Grid Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-            <Rectangle Name="rect" Width="100"  VerticalAlignment="Stretch" Fill="#99000000"  >
-            </Rectangle>
+            <Rectangle Name="rect" Width="125"  VerticalAlignment="Stretch" Fill="#000137" HorizontalAlignment="Stretch" />
+
             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Name="LoggedUser" Height="30" Margin="0, 58, 0, 0" Foreground="White"></TextBlock>
 
-            <Button Click="Home_Click" Height="50" VerticalAlignment="Top" Margin="0,88,0,0">Home</Button>
-            <Button Click="Mar_Click" Height="50" VerticalAlignment="Top" Margin="0,288,0,0" RenderTransformOrigin="0.615,-3.49">Mar</Button>
-            <Button Click="Caregiver_Click" Height="50" VerticalAlignment="Top" Margin="0,188,0,0">Caregiver Info</Button>
-            <Button Click="Client_Click" Height="50" VerticalAlignment="Top" Margin="0,138,0,0">Patient Info</Button>
-            <Button Height="50" VerticalAlignment="Top" Margin="0,238,0,0">Schedule</Button>
-            <Button Height="50" VerticalAlignment="Top" Margin="0,338,0,0">Report</Button>
-            <Button Click="To_login" Height="50" VerticalAlignment="Top" Margin="0,388,0,0">Logout</Button>
+            <Button Click="Home_Click" Height="50" VerticalAlignment="Top" Margin="0,88,0,0" Background="#000137" BorderThickness="0" Foreground="White">Home</Button>
+            <Button Click="Mar_Click" Height="50" VerticalAlignment="Top" Margin="0,288,0,0" RenderTransformOrigin="0.615,-3.49" Background="#000137" BorderThickness="0" Foreground="White">Mar</Button>
+            <Button Click="Caregiver_Click" Height="50" VerticalAlignment="Top" Margin="0,188,0,0" Background="#000137" BorderThickness="0" Foreground="White">Caregiver Info</Button>
+            <Button Click="Client_Click" Height="50" VerticalAlignment="Top" Margin="0,138,0,0" Background="#8da5ed" BorderThickness="0" Foreground="White">Patient Info</Button>
+            <Button Height="50" VerticalAlignment="Top" Margin="0,238,0,0" Background="#000137" BorderThickness="0" Foreground="White">Schedule</Button>
+            <Button Height="50" VerticalAlignment="Top" Margin="0,338,0,0" Background="#000137" BorderThickness="0" Foreground="White">Report</Button>
+            <Button Click="To_login" Height="50" VerticalAlignment="Top" Margin="0,388,0,0" Background="#000137" BorderThickness="0" Foreground="White">Logout</Button>
 
         </Grid>
-        <Grid Grid.Column="1" Margin="10, 0, 10, 0" HorizontalAlignment="Center">
-            <TextBlock Text="Patient Info" FontSize="36"  Margin="10, 25, 10, 0" />
+        <Grid Grid.Column="1" Margin="10, 0, 10, 0" >
+            <!-- <Rectangle Name="recct" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="75" Fill="#000137" /> -->
+           <TextBlock Text="Patient Info" HorizontalAlignment="Center" FontSize="36"  Margin="10, 25, 10, 0" Foreground="Gray" FontWeight="Bold"/>
+
         </Grid>
         <TextBlock Grid.Column="1" Grid.Row="0" Text="First/Last Name" Margin="23,100,577,273" HorizontalAlignment="Center"/>
         <TextBlock Grid.Column="1" Grid.Row="0" Text="Date of Birth" Margin="350,100,250,275" HorizontalAlignment="Center"/>
-        <TextBox Name="Name" VerticalAlignment="Top" Grid.Column="1" Width="150" Height="25" Margin="-300, 100, 0, 0"></TextBox>
-        <TextBox Name="DOB" VerticalAlignment="Top" Grid.Column="1" Width="150" Height="25" Margin="350, 100, 0, 0"></TextBox>
-        <Button Grid.Column="1" Name="Search" Click="Search_Click" Width="150" Height="30" VerticalAlignment="Top" Margin="-200, 150, 0,0">Search</Button>
-        <Button Grid.Column="1" Name="AddPatient" Click="View_Click" Width="150" Height="30" VerticalAlignment="Top" Margin="200, 150, 0, 0">Add New Patient</Button>
+        <TextBox Name="Name" VerticalAlignment="Top" Grid.Column="1" BorderBrush="LightGray" BorderThickness="2" Width="150" Height="30" Margin="-300, 95, 0, 0"></TextBox>
+        <TextBox Name="DOB" VerticalAlignment="Top" Grid.Column="1" BorderBrush="LightGray" BorderThickness="2" Width="150" Height="30" Margin="350, 95, 0, 0"></TextBox>
+        <Button Grid.Column="1" Name="Search" Click="Search_Click" Width="150" Height="30" VerticalAlignment="Top" Margin="-200, 150, 0,0" Foreground="White" Background="#A8A9AD
+">Search</Button>
+        <Button Grid.Column="1" Name="AddPatient" Click="View_Click" Width="150" Height="30" VerticalAlignment="Top" Margin="200, 150, 0, 0" Foreground="White" Background="#A8A9AD
+">Add New Patient</Button>
         <Grid Grid.Column="1" Margin="150, 0, 150, 0" HorizontalAlignment="Center" >
-            <DataGrid  AutoGenerateColumns="False" x:Name="PatientChart" IsReadOnly="False" Margin="-315,200,-299,63" ScrollViewer.CanContentScroll="True" 
+            <!-- DataGrid Boundaries -->
+            <ListView ItemsSource="{Binding masterList}" x:Name="PatientChart" Margin="-315,200,-299,63" ScrollViewer.CanContentScroll="False" 
 		ScrollViewer.VerticalScrollBarVisibility="Auto"
-		ScrollViewer.HorizontalScrollBarVisibility="Auto" CanUserAddRows="false">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Patient ID" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
-                    <DataGridTextColumn Header="Date of Birth" Binding="{Binding birth}"/>
-                    <DataGridTextColumn Header="Height" Binding="{Binding height}"/>
+		ScrollViewer.HorizontalScrollBarVisibility="Auto" BorderThickness="0" Background="#FAF9F6" FontSize="14" HorizontalAlignment="Stretch" >
+               
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Border Width="800" Height="60" BorderBrush="LightGray" BorderThickness="1.5" CornerRadius="3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding Id}" Margin="0, 16, 0, 0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="{Binding name}" Margin="-50, 16, 0, 0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="3">
+                                    <TextBlock Text="{Binding birth}" Margin="0, 16, 0, 0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="4">
+                                    <TextBlock Text="{Binding height}" Margin="0, 16, 0, 0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="5">
+                                    <Button Content="View" Click="View_Click" Width="80" Margin="0, 15, 0, 0" Background="#3944BC" Foreground="White" Height="30" FontWeight="SemiBold" FontSize="12">
+                                        <Button.Resources>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Setter Property="CornerRadius" Value="2"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel Grid.Column="6">
+                                    <Button Content="Edit" Click="Edit_Click"  Width="80" Margin="20, 15, 0, 0" Background="#3944BC" Foreground="White" Height="30" FontWeight="SemiBold" FontSize="12">
+                                        <Button.Resources>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Setter Property="CornerRadius" Value="2"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel Grid.Column="7">
+                                    <Button Content="Delete" Click="Remove_Click"  Width="80" Margin="20, 15, 0, 0" Background="#dc0b00" Foreground="White" Height="30" FontWeight="SemiBold" FontSize="12">
+                                        <Button.Resources>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Setter Property="CornerRadius" Value="2"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        
+                    </DataTemplate>
                     
-                    
-                    <DataGridTemplateColumn Header="View Patient">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="View" Click="View_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Edit Patient">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Edit" Click="Edit_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Delete Patient">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Delete" Click="Remove_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-                
-            </DataGrid>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!-- DataGrid Boundaries -->
+
         </Grid>
 
     </Grid>

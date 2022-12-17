@@ -15,16 +15,17 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" VerticalAlignment="Stretch">
-            <Rectangle Name="rect" Width="100"  VerticalAlignment="Stretch" Fill="#99000000"  >
+            <Rectangle Name="rect" Width="125"  VerticalAlignment="Stretch" Fill="#000137"  >
             </Rectangle>
             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Name="LoggedUser" Height="30" Margin="0, 58, 0, 0" Foreground="White"></TextBlock>
-            <Button Click="Home_Click" Height="50" VerticalAlignment="Top" Margin="0,88,0,0">Home</Button>
-            <Button Click="Mar_Click" Height="50" VerticalAlignment="Top" Margin="0,288,0,0" RenderTransformOrigin="0.615,-3.49">Mar</Button>
-            <Button Click="Caregiver_Click" Height="50" VerticalAlignment="Top" Margin="0,188,0,0">Caregiver Info</Button>
-            <Button Click="Client_Click" Height="50" VerticalAlignment="Top" Margin="0,138,0,0">Patient Info</Button>
-            <Button Height="50" VerticalAlignment="Top" Margin="0,238,0,0">Schedule</Button>
-            <Button Height="50" VerticalAlignment="Top" Margin="0,338,0,0">Report</Button>
-            <Button Click="To_login" Height="50" VerticalAlignment="Top" Margin="0,388,0,0">Logout</Button>
+
+            <Button Click="Home_Click" Height="50" VerticalAlignment="Top" Margin="0,88,0,0" Background="#8da5ed" BorderThickness="0" Foreground="White">Home</Button>
+            <Button Click="Mar_Click" Height="50" VerticalAlignment="Top" Margin="0,288,0,0" RenderTransformOrigin="0.615,-3.49" Background="#000137" BorderThickness="0" Foreground="White">Mar</Button>
+            <Button Click="Caregiver_Click" Height="50" VerticalAlignment="Top" Margin="0,188,0,0" Background="#000137" BorderThickness="0" Foreground="White">Caregiver Info</Button>
+            <Button Click="Client_Click" Height="50" VerticalAlignment="Top" Margin="0,138,0,0" Background="#000137" BorderThickness="0" Foreground="White">Patient Info</Button>
+            <Button Height="50" VerticalAlignment="Top" Margin="0,238,0,0" Background="#000137" BorderThickness="0" Foreground="White">Schedule</Button>
+            <Button Height="50" VerticalAlignment="Top" Margin="0,338,0,0" Background="#000137" BorderThickness="0" Foreground="White">Report</Button>
+            <Button Click="To_login" Height="50" VerticalAlignment="Top" Margin="0,388,0,0" Background="#000137" BorderThickness="0" Foreground="White">Logout</Button>
 
         </Grid>
         <Grid Grid.Column="1" Margin="10, 0, 10, 0" HorizontalAlignment="Center">

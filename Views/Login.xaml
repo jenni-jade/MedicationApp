@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MedicationApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="812.5" d:DesignWidth="1631.25">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -18,7 +22,7 @@
 
 
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="4" Margin="2,28,398,-238" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -27,15 +31,21 @@
                 <RowDefinition Height="auto"/>
 
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Sign In" FontSize="36" 
+            <Rectangle Grid.Column="0" VerticalAlignment="Stretch"/>
+            <TextBlock Grid.Row="0" Grid.Column="0"  Text="Sign In" FontSize="36" 
                        HorizontalAlignment="Center" Margin="0, 75, 0, 0"/>
-            <TextBlock Grid.Row="1" Text="UserName" HorizontalAlignment="Center" Margin="-275, 40, 10, 10"/>
-            <TextBox Grid.Row="1" Text="" Margin="75, 40, 0, 0" Width="250"/>
-            <TextBlock Grid.Row="2" Text="Password" HorizontalAlignment="Center" Margin="-275, 10, 10, 10"/>
-            <TextBox Grid.Row="2" Text="" Margin="75, 10, 0, 0" Width="250" />
-            <Button Grid.Row="3" HorizontalAlignment="Center" Width="125" Height="25" Margin="0, 20, 10, 10"
-                    Click="SignIn_Click" Command="{Binding SignInCommand}" CommandParameter="HomePage">Sign in
-                </Button>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="UserName" HorizontalAlignment="Center" Margin="-275, 40, 10, 10"/>
+            <TextBox Grid.Row="1" Grid.Column="0" Text="" Margin="75, 40, 0, 0" Width="250"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Password" HorizontalAlignment="Center" Margin="-275, 10, 10, 10"/>
+            <TextBox Grid.Row="2" Grid.Column="0" Text="" Margin="75, 10, 0, 0" Width="250" />
+            <Button Grid.Row="4" HorizontalAlignment="Left" Width="125" Height="40" Margin="145,43,0,-48" Content="Sign in"
+                    Click="SignIn_Click" Command="{Binding SignInCommand}" CommandParameter="HomePage" FontStretch="Normal" RenderTransformOrigin="0.555,1.74">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
 
         </Grid>
     </Grid>

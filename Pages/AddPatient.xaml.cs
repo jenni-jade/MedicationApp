@@ -44,8 +44,6 @@ namespace MedicationApp.Pages
                 var emergency = EmergencyContact.Text.ToString();
                 var contact = ContactNumber.Text.ToString();
 
-
-
                 if (name != null && dob != null)
                 {
                     context.Patients.Add(new Patient() {
@@ -69,9 +67,6 @@ namespace MedicationApp.Pages
         private void Discard_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
-
         }
-
-
     }
 }

@@ -9,38 +9,28 @@
       Title="Login">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
 
-        </Grid.RowDefinitions>
+        <Grid>
 
-
-
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Sign In" FontSize="36" 
-                       HorizontalAlignment="Center" Margin="0, 75, 0, 0"/>
-            <TextBlock Grid.Row="1" Text="Username" HorizontalAlignment="Center" Margin="-275, 40, 10, 10"/>
-            <TextBox Name="userText" Grid.Row="1" Text="" Margin="75, 40, 0, 0" Width="250"/>
-            <TextBlock Grid.Row="2" Text="Password" HorizontalAlignment="Center" Margin="-275, 10, 10, 10"/>
-            <TextBox Name="passwordText" Grid.Row="2" Text="" Margin="75, 10, 0, 0" Width="250" />
-            <Button x:Name="login" Grid.Row="3" HorizontalAlignment="Center" Width="125" Height="25" Margin="0, 20, 10, 10"
-                    Click="SignIn_Click" Command="{Binding SignInCommand}" CommandParameter="HomePage">Sign in
+            <Rectangle Grid.Column="0" VerticalAlignment="Stretch" Fill="#000137"/>
+            <TextBlock Grid.Column="0" Foreground="White" Text="Sign In" FontSize="36" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, -435, 0, 0"/>
+            <TextBlock  Grid.Column="0" Foreground="White" Text="UserName" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-210, -245, 10, 10" FontSize="16"/>
+            <TextBox Grid.Column="0" Name="userText" Foreground="Black" Height="30" Background="White" HorizontalAlignment="Center" Text="" Margin="125, -250, 0, 0" Width="250"/>
+            <TextBlock Grid.Column="0" Foreground="White" Text="Password" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-210, -115, 10, 10" FontSize="16"/>
+            <TextBox Grid.Column="0" Name="passwordText"  Foreground="Black" Height="30" Background="White" HorizontalAlignment="Center" Text="" Margin="125, -125, 0, 0" Width="250" />
+            <Button  Grid.Column="0" HorizontalAlignment="Center" Width="125" Height="40" Margin="0, 45, 0, 0"
+                    Click="SignIn_Click" Command="{Binding SignInCommand}" CommandParameter="HomePage" FontStretch="Normal" RenderTransformOrigin="0.555,1.74" Content="Sign in">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="100"/>
+                    </Style>
+                </Button.Resources>
             </Button>
-            <Frame x:Name="SignIn"/>
-
-
         </Grid>
     </Grid>
 </Page>

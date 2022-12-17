@@ -6,11 +6,11 @@
              xmlns:ViewModels="clr-namespace:MedicationApp.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type ViewModels:HomePageViewModel}">
-            <views:HomePage/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:LoginViewModel}">
-            <views:Login/>
-        </DataTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

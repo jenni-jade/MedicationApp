@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\ljsag\source\repos\MedicationApp\MedicationApp\obj\Debug\net6.0-windows\
+C:\Users\Lance\MedicationApp\MedicationApp\obj\Debug\net6.0-windows\
 MedicationApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\ljsag\source\repos\MedicationApp\MedicationApp\App.xaml
+C:\Users\Lance\MedicationApp\MedicationApp\App.xaml
 15930774583
 
 27-981731273
-215-1588342401
+221-283527449
 MainWindow.xaml;Modals\AddPatientModal.xaml;Modals\EditPatientModal.xaml;Modals\EditUserModal.xaml;Pages\AddPatient.xaml;Pages\CareGiverPage.xaml;Pages\ClientInfoPage.xaml;Pages\EditPatient.xaml;Pages\EditUser.xaml;Pages\LandingPage.xaml;Pages\Login.xaml;Pages\Mar.xaml;Pages\UserAdmin.xaml;Views\HomePage.xaml;Views\Login.xaml;
 
 False
