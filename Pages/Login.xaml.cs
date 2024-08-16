@@ -28,7 +28,7 @@ namespace MedicationApp.Pages
             var username = userText.Text.ToString();
             var password = passwordText.Text.ToString();
 
-            if (userText.Text.Equals("lance19") && passwordText.Text.Equals("Kamchatka2@"))
+            if (userText.Text.Equals("lance19") && passwordText.Text.Equals("password1"))
             {
                 Application.Current.MainWindow.Content = new UserAdmin();
             }
