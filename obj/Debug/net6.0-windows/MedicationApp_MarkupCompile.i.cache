@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\aguil\source\repos\MedicationApp\MedicationApp\obj\Debug\net6.0-windows\
+C:\Users\Jennifer Jade\Desktop\PatientManagement\MedicationApp\obj\Debug\net6.0-windows\
 MedicationApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\aguil\source\repos\MedicationApp\MedicationApp\App.xaml
-15930774583
+C:\Users\Jennifer Jade\Desktop\PatientManagement\MedicationApp\App.xaml
+201555074433
 
-29-1716857109
-221-2017270293
-MainWindow.xaml;Modals\AddPatientModal.xaml;Modals\EditPatientModal.xaml;Modals\EditUserModal.xaml;Pages\AddPatient.xaml;Pages\CareGiverPage.xaml;Pages\ClientInfoPage.xaml;Pages\EditPatient.xaml;Pages\EditUser.xaml;Pages\LandingPage.xaml;Pages\Login.xaml;Pages\Mar.xaml;Pages\UserAdmin.xaml;Views\HomePage.xaml;Views\Login.xaml;
+342039348421
+221-2050351930
+MainWindow.xaml;Modals\AddPatientModal.xaml;Modals\EditPatientModal.xaml;Modals\EditUserModal.xaml;Pages\AddPatient.xaml;Pages\CareGiverPage.xaml;Pages\ClientInfoPage.xaml;Pages\EditPatient.xaml;Pages\EditUser.xaml;Pages\LandingPage.xaml;Pages\Login.xaml;Pages\Mar.xaml;Pages\UserAdmin.xaml;ViewModels\LandingPageViewModel.xaml;Views\HomePage.xaml;Views\LandingPage.xaml;Views\Login.xaml;Views\LoginViews\LoginPage.xaml;Views\PatientViews\PatientList.xaml;Views\UserViews\CreateUserPage.xaml;
 
 False
 
