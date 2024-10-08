@@ -26,12 +26,6 @@ namespace MedicationApp.Pages
                 // Navigate to the main application window or landing page
                 NavigationService.Navigate(new LandingPage());
             }
-            else
-            {
-                // If authentication fails:
-                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         private bool AuthenticateUser(string username, string password)
         {
