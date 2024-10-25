@@ -1,5 +1,4 @@
 ﻿
-
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -10,11 +9,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\acolytes.png" />
+    <None Remove="Assets\better.jpeg" />
+    <None Remove="Assets\logo.png" />
+    <None Remove="Fonts\Raleway-Bold.ttf" />
+    <None Remove="Fonts\Raleway-Thin.ttf" />
+    <None Remove="Fonts\Raleway-ThinItalic.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.2.5" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.6" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\acolytes.png" />
+    <Resource Include="Assets\better.jpeg" />
+    <Resource Include="Assets\logo.png" />
+    <Resource Include="Fonts\Raleway-Bold.ttf" />
+    <Resource Include="Fonts\Raleway-Thin.ttf" />
+    <Resource Include="Fonts\Raleway-ThinItalic.ttf" />
   </ItemGroup>
 
 </Project>

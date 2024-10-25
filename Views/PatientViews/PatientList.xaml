@@ -1,14 +1,162 @@
-﻿<Page x:Class="MedicationApp.Views.PatientViews.PatientList"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MedicationApp.Views.PatientViews"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="PatientList">
-
-    <Grid>
+﻿<Window x:Class="MedicationApp.Views.PatientViews.PatientList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Patient List" Height="600" Width="1000">
+    
         
+
+    <Window.Resources>
+        <Style x:Key="ModernMenuButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Raleway Thin"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#2C2F33"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Hover Effect -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#7289DA"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#7289DA" BlurRadius="15" ShadowDepth="0"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <!-- Click Effect -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#4E5D94"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0">
+        <!-- Background Gradient -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0F2027" Offset="0" />
+                <GradientStop Color="#203A43" Offset="0.5" />
+                <GradientStop Color="#2C5364" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <!-- Side Menu Column -->
+            <ColumnDefinition Width="200" />
+            <!-- Main Content Column -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Popup for displaying button hover information -->
+        <Popup x:Name="Popup" Placement="Right" IsOpen="False" StaysOpen="False">
+            <Border Background="#2C2F33" CornerRadius="8" Padding="10" BorderBrush="#7289DA" BorderThickness="1">
+                <Border.Effect>
+                    <!-- Adding a subtle shadow for a cleaner and modern look -->
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.3" Color="Black" />
+                </Border.Effect>
+                <StackPanel Orientation="Vertical">
+                    <!-- Icon or some other graphical content can be added here for a richer design -->
+                    <TextBlock x:Name="PopupText" Foreground="White" FontSize="16" FontWeight="Bold" TextWrapping="Wrap" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <!-- Modern Side Menu with Buttons -->
+        <Border Grid.Column="0" Background="#23272A" CornerRadius="15" Margin="10" Padding="10" Opacity="0.95">
+            <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
+                <!-- Logo Image -->
+                <Image Source="\Assets\logo.png" Width="180" Height="90" />
+                <!-- Username Text -->
+                <TextBlock x:Name="LoggedUser" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="#00FFFF" FontSize="18" TextAlignment="Center"  VerticalAlignment="Center"  HorizontalAlignment="Center"
+                Margin="0,20,0,20" />
+
+                <!-- Menu Buttons styled using ModernMenuButtonStyle -->
+                <Button x:Name="btnHome" Content="Home" Style="{StaticResource ModernMenuButtonStyle}" 
+Click="btnHome_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+
+                <Button x:Name="btnPatientList" Content="Patient List" Style="{StaticResource ModernMenuButtonStyle}" 
+        Click="btnPatientList_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+
+
+                <Button x:Name="btnCaregiverInfo" Content="Caregiver Info" Style="{StaticResource ModernMenuButtonStyle}" 
+Click="btnCaregiverInfo_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnMar" Content="Mar" Style="{StaticResource ModernMenuButtonStyle}" 
+Click="btnMar_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnSchedule" Content="Schedule" Style="{StaticResource ModernMenuButtonStyle}" 
+Click="btnSchedule_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnReport" Content="Report" Style="{StaticResource ModernMenuButtonStyle}" 
+Click="btnReport_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnLogout" Content="Logout" Background="#00BFFF" Foreground="White" 
+Style="{StaticResource ModernMenuButtonStyle}" Click="btnLogout_Click" 
+MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+
+            </StackPanel>
+        </Border>
+        
+        <!-- Main Content Area -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Title Text -->
+            <TextBlock Text="Patient List" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" FontSize="25"  Foreground="#FFFFFF" Margin="0,0,0,20" 
+                       HorizontalAlignment="Center" />
+
+            <!-- DataGrid for Patients -->
+            <DataGrid x:Name="PatientDataGrid" Grid.Row="1" FontFamily="pack://application:,,,/Fonts/#Raleway Bold"  AutoGenerateColumns="False" Margin="0,10,0,10" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="False"  ItemsSource="{Binding Patients}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="PatientDataGrid_SelectionChanged" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Patient ID" Binding="{Binding PatientId}" Width="*" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="*" />
+                    <DataGridTemplateColumn Header="Edit" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Click="EditPatient_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Delete" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Click="DeletePatient_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="View" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="View" Click="ViewPatient_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Buttons for Adding New Patient -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button x:Name="btnAddPatient" Content="Add New Patient" Width="150" Height="35" Margin="0,0,10,0" 
+                        Click="AddPatient_Click" />
+            </StackPanel>
+        </Grid>
     </Grid>
-</Page>
+</Window>

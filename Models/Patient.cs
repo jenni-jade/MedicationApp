@@ -1,29 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicationApp.Models
 {
     public class Patient
     {
-        [Key]
-        public int Id { get; set; }
-        public String name { get; set; }
-        public String birth { get; set; }
-        public String height { get; set; }
-        public String gender { get; set; }
-        public String ssn { get; set; }
-        public String address { get; set; }
-        public String emergencyContact { get; set; }
-        public String contactNumber { get; set; }
-        public String referringPhysician { get; set; }
-        public String Diagnosis { get; set; }
-        public String Medication { get; set; }
-        public String emailAddress {  get; set; }
+        public int PatientId { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public float Height { get; set; }
 
-
+        // Add the missing boolean properties:
+        public bool IsDNR { get; set; }
+        public bool IsDNRArrest { get; set; }
+        public bool IsFullCode { get; set; }
+        public bool IsComfortMeasOnly { get; set; }
+        public bool IsLivingWill { get; set; }
+        public bool IsPowerOfAttorney { get; set; }
+        public bool IsCopyOnFile { get; set; }
+        public bool IsNCFEligible { get; set; }
+        public bool IsFallRisk { get; set; }
+        public bool IsHOH { get; set; }
+        public bool IsDisoriented { get; set; }
+        public bool IsDialysis { get; set; }
+        public bool IsVulnerable { get; set; }
+        public bool IsDisabled { get; set; }
+        public bool IsEscortRequired { get; set; }
+        public bool IsFrail { get; set; }
+        public bool IsAlert { get; set; }
     }
 }

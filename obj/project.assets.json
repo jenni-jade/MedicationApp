@@ -1510,11 +1510,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\MedicationApp\\MedicationApp.csproj",
+      "projectUniqueName": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\AcolytesPtManagement\\MedicationApp.csproj",
       "projectName": "MedicationApp",
-      "projectPath": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\MedicationApp\\MedicationApp.csproj",
+      "projectPath": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\AcolytesPtManagement\\MedicationApp.csproj",
       "packagesPath": "C:\\Users\\Jennifer Jade\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\MedicationApp\\obj\\",
+      "outputPath": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\AcolytesPtManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

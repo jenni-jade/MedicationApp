@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lance\MedicationApp\MedicationApp\obj\Debug\net6.0-windows\
+C:\Users\Jennifer Jade\Desktop\PatientManagement\AcolytesPtManagement\obj\Debug\net6.0-windows\
 MedicationApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Lance\MedicationApp\MedicationApp\App.xaml
-15930774583
+C:\Users\Jennifer Jade\Desktop\PatientManagement\AcolytesPtManagement\App.xaml
+6-89406761
 
-27-981731273
-221-283527449
-MainWindow.xaml;Modals\AddPatientModal.xaml;Modals\EditPatientModal.xaml;Modals\EditUserModal.xaml;Pages\AddPatient.xaml;Pages\CareGiverPage.xaml;Pages\ClientInfoPage.xaml;Pages\EditPatient.xaml;Pages\EditUser.xaml;Pages\LandingPage.xaml;Pages\Login.xaml;Pages\Mar.xaml;Pages\UserAdmin.xaml;Views\HomePage.xaml;Views\Login.xaml;
+18-788242878
+221-2050351930
+ViewModels\LandingPageViewModel.xaml;Views\LandingPage.xaml;Views\LoginViews\LoginPage.xaml;Views\PatientViews\PatientDetails.xaml;Views\PatientViews\PatientList.xaml;Views\UserViews\CreateUserPage.xaml;
 
 False
 

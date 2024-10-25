@@ -1,51 +1,46 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using MedicationApp.Models;
+using MedicationApp.Views.PatientViews;
+using MedicationApp.Views.UserViews; // Assuming this contains your LandingPage and CreateUserPage
+using System.Windows;
 
 namespace MedicationApp.Pages
 {
-    /// <summary>
-    /// Interaction logic for LoginPage.xaml
-    /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : Window
     {
         public LoginPage()
         {
             InitializeComponent();
         }
 
+        // Sign In button click event handler
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Get username and password
-            string username = userText.Text;
-            string password = passwordBox.Password;
+            // Get the entered username and password (if needed)
+            string loggedInUsername = userText.Text;
+            string password = passwordBox.Password; // Retrieve password from the PasswordBox
 
-            // 2. Authenticate user
-            if (AuthenticateUser(username, password))
+            // Here, you could add logic to authenticate the user with a backend service or database
+            // For now, let's assume any username/password combination is accepted for the sake of simplicity.
+
+            if (string.IsNullOrWhiteSpace(loggedInUsername))
             {
-                // If authentication successful:
-                // Navigate to the main application window or landing page
-                NavigationService.Navigate(new LandingPage());
+                MessageBox.Show("Please enter a valid username.", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
-        private bool AuthenticateUser(string username, string password)
-        {
-            // Replace this with  actual authentication logic
-            // This could involve checking against a database, an API, or any other authentication method.
-
-            // Example: Simple hardcoded authentication (for demonstration only - NOT SECURE)
-            if (username == "admin" && password == "password")
-            {
-                return true;
-            }
-            return false;
+            // Navigate to Landing Page (pass username to the LandingPage)
+            LandingPage landingPage = new LandingPage(loggedInUsername);
+            landingPage.Show();
+            this.Close(); // Close the login page
         }
 
+        // Create User button click event handler
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
-            // Navigate to the Create User page
-            NavigationService.Navigate(new Views.UserViews.CreateUserPage());
+            // Navigate to Create User Page
+            CreateUserPage createUserPage = new CreateUserPage();
+            createUserPage.Show();
+            this.Close(); // Optionally close the login page
         }
     }
 }
-
-

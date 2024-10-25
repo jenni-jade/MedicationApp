@@ -53,7 +53,7 @@ namespace MedicationApp.Modals {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MedicationApp;V1.0.0.0;component/modals/addpatientmodal.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MedicationApp;component/modals/addpatientmodal.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Modals\AddPatientModal.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

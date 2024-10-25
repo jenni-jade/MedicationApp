@@ -7,24 +7,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using MedicationApp.Models;
+using MedicationApp.Pages;
 
 namespace MedicationApp
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            // facade pattern simiplifies complex implementations (which depend on subsystems)
-            DatabaseFacade facade = new DatabaseFacade(new UserDataContext());
-            DatabaseFacade patientFacade = new DatabaseFacade(new PatientDataContext());
-
-            // Ensures database and schemas already exist
-            facade.EnsureCreated();
-            patientFacade.EnsureCreated();
-
+            base.OnStartup(e);
         }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿<Page x:Class="MedicationApp.Pages.LandingPage"
+﻿<Window x:Class="MedicationApp.Pages.LandingPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +9,7 @@
       Title="LandingPage">
 
     <!-- Define Resources -->
-    <Page.Resources>
+    <Window.Resources>
         <!-- Modern Sidebar Button Style with Raleway Thin Font -->
         <Style x:Key="ModernMenuButtonStyle" TargetType="Button">
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Raleway Thin"/>
@@ -46,7 +46,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Page.Resources>
+    </Window.Resources>
 
     <Grid Margin="0,0,0,-75">
         <!-- Background Gradient -->
@@ -67,28 +67,45 @@
 
         <!-- Modern Side Menu with Buttons -->
         <Border Grid.Column="0" Background="#23272A" CornerRadius="15" Margin="10" Padding="10" Opacity="0.95">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
                 <!-- Logo Image -->
                 <Image Source="\Assets\logo.png" Width="180" Height="90" />
                 <!-- Username Text -->
-                <TextBlock x:Name="LoggedUser" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="#FFFFFF" FontSize="16" FontWeight="Bold" Text="User: [Username]" Margin="0,20,0,20" />
+                <TextBlock x:Name="LoggedUser"   
+                           
+            FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
+           Foreground="#00FFFF" 
+           FontSize="18"
+           TextAlignment="Center" 
+           VerticalAlignment="Center" 
+           HorizontalAlignment="Center"
+           Margin="0,20,0,20" />
 
                 <!-- Menu Buttons styled using ModernMenuButtonStyle -->
-                <Button x:Name="btnHome" Content="Home" Style="{StaticResource ModernMenuButtonStyle}" Click="btnHome_Click" />
-                <Button x:Name="btnPatientInfo" Content="Patient Info" Style="{StaticResource ModernMenuButtonStyle}" Click="btnPatientInfo_Click" />
-                <Button x:Name="btnCaregiverInfo" Content="Caregiver Info" Style="{StaticResource ModernMenuButtonStyle}" Click="btnCaregiverInfo_Click" />
-                <Button x:Name="btnMar" Content="Mar" Style="{StaticResource ModernMenuButtonStyle}" Click="btnMar_Click" />
-                <Button x:Name="btnSchedule" Content="Schedule" Style="{StaticResource ModernMenuButtonStyle}" Click="btnSchedule_Click" />
-                <Button x:Name="btnReport" Content="Report" Style="{StaticResource ModernMenuButtonStyle}" Click="btnReport_Click" />
-                <Button x:Name="btnLogout" Content="Logout" Background="#00BFFF" Foreground="White" Style="{StaticResource ModernMenuButtonStyle}" Click="btnLogout_Click" />
+                <Button x:Name="btnHome" Content="Home" Style="{StaticResource ModernMenuButtonStyle}" 
+        Click="btnHome_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnPatientList" Content="Patient List" Style="{StaticResource ModernMenuButtonStyle}" 
+        Click="btnPatientList_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnCaregiverInfo" Content="Caregiver Info" Style="{StaticResource ModernMenuButtonStyle}" 
+        Click="btnCaregiverInfo_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnMar" Content="Mar" Style="{StaticResource ModernMenuButtonStyle}" 
+        Click="btnMar_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnSchedule" Content="Schedule" Style="{StaticResource ModernMenuButtonStyle}" 
+        Click="btnSchedule_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnReport" Content="Report" Style="{StaticResource ModernMenuButtonStyle}" 
+        Click="btnReport_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+                <Button x:Name="btnLogout" Content="Logout" Background="#00BFFF" Foreground="White" 
+        Style="{StaticResource ModernMenuButtonStyle}" Click="btnLogout_Click" 
+        MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" />
+
             </StackPanel>
         </Border>
 
         <!-- Main Content Area -->
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="10">
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
             <!-- Welcome Text -->
-            <TextBlock Text="Welcome to Acolytes Home Health Care Patient Management System! " FontSize="17" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="#FFFFFF" Margin="0,20,0,20" HorizontalAlignment="Center" />
-            <Image Source="/Assets/better.jpeg" Width="623" Height="421" Stretch="Uniform"/>
+            <TextBlock Text="Welcome to Acolytes Home Health Care Patient Management System! " FontSize="20" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" FontStyle="Italic" Foreground="#FFFFFF" Margin="0,20,0,20" HorizontalAlignment="Center" />
+            <Image Source="/Assets/better.jpeg"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
             <!-- Image -->
         </StackPanel>
 
@@ -99,4 +116,4 @@
             </Border>
         </Popup>
     </Grid>
-</Page>
+</Window>

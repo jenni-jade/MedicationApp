@@ -1,18 +1,6 @@
 ﻿
-FC:\Users\Lance\MedicationApp\MedicationApp\App.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\MainWindow.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Modals\AddPatientModal.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Modals\EditPatientModal.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Modals\EditUserModal.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\AddPatient.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\CareGiverPage.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\ClientInfoPage.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\EditPatient.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\EditUser.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\LandingPage.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\Login.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\Mar.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Pages\UserAdmin.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Views\HomePage.xaml;;
-FC:\Users\Lance\MedicationApp\MedicationApp\Views\Login.xaml;;
+FC:\Users\Jennifer Jade\Desktop\PatientManagement\AcolytesPtManagement\App.xaml;;
+FC:\Users\Jennifer Jade\Desktop\PatientManagement\AcolytesPtManagement\ViewModels\LandingPageViewModel.xaml;;
+FC:\Users\Jennifer Jade\Desktop\PatientManagement\AcolytesPtManagement\Views\LandingPage.xaml;;
+FC:\Users\Jennifer Jade\Desktop\PatientManagement\AcolytesPtManagement\Views\UserViews\CreateUserPage.xaml;;
 

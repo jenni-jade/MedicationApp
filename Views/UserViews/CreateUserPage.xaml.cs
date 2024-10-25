@@ -25,5 +25,10 @@ namespace MedicationApp.Views.UserViews
         {
             InitializeComponent();
         }
+
+        internal void Show()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

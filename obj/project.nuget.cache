@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VvOw2/9d4wU=",
+  "dgSpecHash": "L/g8NGKyc74=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\MedicationApp\\MedicationApp.csproj",
+  "projectFilePath": "C:\\Users\\Jennifer Jade\\Desktop\\PatientManagement\\AcolytesPtManagement\\MedicationApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jennifer Jade\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
     "C:\\Users\\Jennifer Jade\\.nuget\\packages\\mahapps.metro\\2.0.0\\mahapps.metro.2.0.0.nupkg.sha512",
