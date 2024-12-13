@@ -1,16 +1,181 @@
 ﻿using MedicationApp.Models;
 using MedicationApp.Pages;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Threading;
 
 namespace MedicationApp.Views.PatientViews
 {
     public partial class PatientDetails : Window
     {
-      
-        private Patient _patient; // Store the patient object
+        public Patient SelectedPatient { get; }
+        public string Username { get; }
 
+     
+        public PatientDetails(Patient patient, string username)
+        {
+            InitializeComponent();
+            this.SelectedPatient = patient;
+        }
+            private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Show the popup for submission confirmation
+            SubmitPopup.IsOpen = true;
 
+            // Close the popup after 2 seconds
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(2);
+            timer.Tick += (s, args) =>
+            {
+                SubmitPopup.IsOpen = false;
+                timer.Stop();
+            };
+            timer.Start();
+
+            // Clear all text fields
+            txtPatientId.Clear();
+            txtName.Clear();
+            txtAge.Clear();
+            dpBirthdate.SelectedDate = null;
+            txtHeight.Clear();
+            txtPrimaryInsurance.Clear();
+            txtIDNumber.Clear();
+            txtGroupNumber.Clear();
+            txtPolicyHolder.Clear();
+            txtInsurancePhoneNumber.Clear();
+
+            // Uncheck all checkboxes
+            UncheckAllCheckBoxes();
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Reset the form fields just like the Submit button
+            txtPatientId.Clear();
+            txtName.Clear();
+            txtAge.Clear();
+            dpBirthdate.SelectedDate = null;
+            txtHeight.Clear();
+            txtPrimaryInsurance.Clear();
+            txtIDNumber.Clear();
+            txtGroupNumber.Clear();
+            txtPolicyHolder.Clear();
+            txtInsurancePhoneNumber.Clear();
+
+            // Uncheck all checkboxes
+            UncheckAllCheckBoxes();
+        }
+
+        private void UncheckAllCheckBoxes()
+        {
+            chkIsDNR.IsChecked = false;
+            chkIsDNRArrest.IsChecked = false;
+            chkIsFullCode.IsChecked = false;
+            chkIsComfortMeasOnly.IsChecked = false;
+            chkIsLivingWill.IsChecked = false;
+            chkIsPowerOfAttorney.IsChecked = false;
+            chkIsCopyOnFile.IsChecked = false;
+            chkIsNCFEligible.IsChecked = false;
+            chkIsFallRisk.IsChecked = false;
+            chkIsHOH.IsChecked = false;
+            chkIsDisoriented.IsChecked = false;
+            chkIsDialysis.IsChecked = false;
+            chkIsVulnerable.IsChecked = false;
+            chkIsDisabled.IsChecked = false;
+            chkIsEscortRequired.IsChecked = false;
+            chkIsFrail.IsChecked = false;
+            chkIsAlert.IsChecked = false;
+
+            // Additional checkboxes for Services and Home Management sections
+            chkIsSN.IsChecked = false;
+            chkIsPT.IsChecked = false;
+            chkIsOT.IsChecked = false;
+            chkIsST.IsChecked = false;
+            chkIsMSW.IsChecked = false;
+            chkIsHHA.IsChecked = false;
+            chkIsHMKR.IsChecked = false;
+            chkIsCompanion.IsChecked = false;
+            chkIshousekeeper.IsChecked = false;
+            chkIsTeleReasurance.IsChecked = false;
+            chkIsHomefriend.IsChecked = false;
+            chkIsNutrition.IsChecked = false;
+            chkIsIV.IsChecked = false;
+            chkIsRespite.IsChecked = false;
+            chkIsChaplin.IsChecked = false;
+            chkIsMusic.IsChecked = false;
+
+            chkIsAmbulation.IsChecked = false;
+            chkIsHearing.IsChecked = false;
+            chkIsVision.IsChecked = false;
+            chkIsSpeech.IsChecked = false;
+            chkIsOriented.IsChecked = false;
+            chkIsPleasant.IsChecked = false;
+            chkIsPassive.IsChecked = false;
+            chkIsDepressed.IsChecked = false;
+            chkIsAgitated.IsChecked = false;
+            chkIsHostile.IsChecked = false;
+            chkIsParalysis.IsChecked = false;
+            chkIsCat.IsChecked = false;
+            chkIsDog.IsChecked = false;
+            chkIsSmokes.IsChecked = false;
+            chkIsOther.IsChecked = false;
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            // Show a confirmation message
+            var result = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                // Navigate to LoginPage
+                LoginPage loginPage = new LoginPage();
+                loginPage.Show();
+
+                // Close the current window
+                this.Close();
+            }
+        }
+
+        // Navigation button handlers (for completeness, adjust these as needed)
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Navigating to Home Page.");
+        }
+
+        private void btnPatientList_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Patient List button clicked!");
+        }
+
+        private void btnCaregiverInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Navigating to Caregiver Info Page.");
+        }
+
+        private void btnMar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Navigating to MAR Page.");
+        }
+
+        private void btnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Navigating to Schedule Page.");
+        }
+
+        private void btnReport_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Navigating to Report Page.");
+        }
+
+        private void chkIsPowerOfAttorney_Checked(object sender, RoutedEventArgs e)
+        {
+            // Handle the Power of Attorney checkbox check event if needed
+        }
+
+        // Scroll to specific sections
         private void ScrollToPersonalInfo(object sender, RoutedEventArgs e)
         {
             PersonalInfoGroupBox.BringIntoView();
@@ -28,188 +193,12 @@ namespace MedicationApp.Views.PatientViews
 
         private void ScrollToServices(object sender, RoutedEventArgs e)
         {
-            PrioritiesGroupBox.BringIntoView();
-
+            ServicesGroupBox.BringIntoView();
         }
 
-
-        public string Username { get; set; }
-        public Patient CurrentPatient { get; set; }
-
-
-
-        // Constructor that accepts both a Patient object and username to display patient details
-        public PatientDetails(Patient patient, string username)
+        private void ScrollToHomeManagement(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-            CurrentPatient = patient;
-            Username = username;
-            LoggedUser.Text = $"{username}";
-            _patient = patient;
-
-            // Assign the patient details to the UI elements
-            txtPatientId.Text = patient.PatientId.ToString();
-            txtName.Text = patient.Name;
-            txtAge.Text = patient.Age.ToString();
-            dpBirthdate.SelectedDate = patient.DateOfBirth;
-            txtHeight.Text = patient.Height.ToString();
-
-            // Set the checkbox states based on the patient's properties
-            SetCheckBoxStates();
-
-            // Add event handlers for checkboxes to track changes
-            RegisterCheckBoxEvents();
-        }
-
-        // Function to set the checkboxes' initial states based on patient data
-        private void SetCheckBoxStates()
-        {
-            chkIsDNR.IsChecked = _patient.IsDNR;
-            chkIsDNRArrest.IsChecked = _patient.IsDNRArrest;
-            chkIsFullCode.IsChecked = _patient.IsFullCode;
-            chkIsComfortMeasOnly.IsChecked = _patient.IsComfortMeasOnly;
-            chkIsLivingWill.IsChecked = _patient.IsLivingWill;
-            chkIsPowerOfAttorney.IsChecked = _patient.IsPowerOfAttorney;
-            chkIsCopyOnFile.IsChecked = _patient.IsCopyOnFile;
-            chkIsNCFEligible.IsChecked = _patient.IsNCFEligible;
-            chkIsFallRisk.IsChecked = _patient.IsFallRisk;
-            chkIsHOH.IsChecked = _patient.IsHOH;
-            chkIsDisoriented.IsChecked = _patient.IsDisoriented;
-            chkIsDialysis.IsChecked = _patient.IsDialysis;
-            chkIsVulnerable.IsChecked = _patient.IsVulnerable;
-            chkIsDisabled.IsChecked = _patient.IsDisabled;
-            chkIsEscortRequired.IsChecked = _patient.IsEscortRequired;
-            chkIsFrail.IsChecked = _patient.IsFrail;
-            chkIsAlert.IsChecked = _patient.IsAlert;
-        }
-
-        // Function to register event handlers for checkboxes
-        private void RegisterCheckBoxEvents()
-        {
-            chkIsDNR.Checked += CheckBox_CheckedChanged;
-            chkIsDNR.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsDNRArrest.Checked += CheckBox_CheckedChanged;
-            chkIsDNRArrest.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsFullCode.Checked += CheckBox_CheckedChanged;
-            chkIsFullCode.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsComfortMeasOnly.Checked += CheckBox_CheckedChanged;
-            chkIsComfortMeasOnly.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsLivingWill.Checked += CheckBox_CheckedChanged;
-            chkIsLivingWill.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsPowerOfAttorney.Checked += CheckBox_CheckedChanged;
-            chkIsPowerOfAttorney.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsCopyOnFile.Checked += CheckBox_CheckedChanged;
-            chkIsCopyOnFile.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsNCFEligible.Checked += CheckBox_CheckedChanged;
-            chkIsNCFEligible.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsFallRisk.Checked += CheckBox_CheckedChanged;
-            chkIsFallRisk.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsHOH.Checked += CheckBox_CheckedChanged;
-            chkIsHOH.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsDisoriented.Checked += CheckBox_CheckedChanged;
-            chkIsDisoriented.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsDialysis.Checked += CheckBox_CheckedChanged;
-            chkIsDialysis.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsVulnerable.Checked += CheckBox_CheckedChanged;
-            chkIsVulnerable.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsDisabled.Checked += CheckBox_CheckedChanged;
-            chkIsDisabled.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsEscortRequired.Checked += CheckBox_CheckedChanged;
-            chkIsEscortRequired.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsFrail.Checked += CheckBox_CheckedChanged;
-            chkIsFrail.Unchecked += CheckBox_CheckedChanged;
-
-            chkIsAlert.Checked += CheckBox_CheckedChanged;
-            chkIsAlert.Unchecked += CheckBox_CheckedChanged;
-        }
-
-        // Event handler for the checkbox changes
-        private void CheckBox_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            var checkbox = sender as CheckBox;
-            if (checkbox == null || _patient == null) return;
-
-            // Update the corresponding patient properties based on which checkbox was checked/unchecked
-            switch (checkbox.Name)
-            {
-                case "chkIsDNR":
-                    _patient.IsDNR = checkbox.IsChecked == true;
-                    break;
-                case "chkIsDNRArrest":
-                    _patient.IsDNRArrest = checkbox.IsChecked == true;
-                    break;
-                case "chkIsFullCode":
-                    _patient.IsFullCode = checkbox.IsChecked == true;
-                    break;
-                case "chkIsComfortMeasOnly":
-                    _patient.IsComfortMeasOnly = checkbox.IsChecked == true;
-                    break;
-                case "chkIsLivingWill":
-                    _patient.IsLivingWill = checkbox.IsChecked == true;
-                    break;
-                case "chkIsPowerOfAttorney":
-                    _patient.IsPowerOfAttorney = checkbox.IsChecked == true;
-                    break;
-                case "chkIsCopyOnFile":
-                    _patient.IsCopyOnFile = checkbox.IsChecked == true;
-                    break;
-                case "chkIsNCFEligible":
-                    _patient.IsNCFEligible = checkbox.IsChecked == true;
-                    break;
-                case "chkIsFallRisk":
-                    _patient.IsFallRisk = checkbox.IsChecked == true;
-                    break;
-                case "chkIsHOH":
-                    _patient.IsHOH = checkbox.IsChecked == true;
-                    break;
-                case "chkIsDisoriented":
-                    _patient.IsDisoriented = checkbox.IsChecked == true;
-                    break;
-                case "chkIsDialysis":
-                    _patient.IsDialysis = checkbox.IsChecked == true;
-                    break;
-                case "chkIsVulnerable":
-                    _patient.IsVulnerable = checkbox.IsChecked == true;
-                    break;
-                case "chkIsDisabled":
-                    _patient.IsDisabled = checkbox.IsChecked == true;
-                    break;
-                case "chkIsEscortRequired":
-                    _patient.IsEscortRequired = checkbox.IsChecked == true;
-                    break;
-                case "chkIsFrail":
-                    _patient.IsFrail = checkbox.IsChecked == true;
-                    break;
-                case "chkIsAlert":
-                    _patient.IsAlert = checkbox.IsChecked == true;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        // Logout button click event handler to close the current window
-        private void btnLogout_Click(object sender, RoutedEventArgs e)
-        {
-            // Show the login window and close the current window
-            LoginPage loginPage = new LoginPage();
-            loginPage.Show();
-            this.Close();
+            HomeManagementGroupBox.BringIntoView();
         }
     }
 }

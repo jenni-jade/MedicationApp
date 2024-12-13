@@ -4,12 +4,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="Patient Details" Height="1022" Width="800">
-
+        Title="Patient Details" Height="800" Width="800">
+ 
     <Window.Resources>
-        <!-- Modern Sidebar Button Style with Raleway Thin Font -->
         <Style x:Key="ModernMenuButtonStyle" TargetType="Button">
-            <Setter Property="FontFamily" Value="Raleway"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Raleway Thin"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -43,247 +42,231 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!-- Style for Checkboxes to show "X" when checked -->
-        <Style TargetType="CheckBox">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="CheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Text for the label next to the checkbox -->
-                            <TextBlock Text="{TemplateBinding Content}" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
-
-                            <!-- Border for the checkbox area -->
-                            <Border Width="20" Height="20" BorderBrush="White" BorderThickness="1" Background="Transparent">
-                                <!-- TextBlock inside the checkbox (will show "X" when checked) -->
-                                <TextBlock x:Name="CheckMark" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-                            </Border>
-                        </StackPanel>
-
-                        <!-- ControlTemplate triggers to update the checkbox -->
-                        <ControlTemplate.Triggers>
-                            <!-- When IsChecked is True, display "X" -->
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Text" Value="X"/>
-                            </Trigger>
-
-                            <!-- When IsChecked is False, clear the text -->
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Text" Value=""/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-
     </Window.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
-        <ScrollViewer.RenderTransform>
-            <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform AngleX="0.265"/>
-                <RotateTransform/>
-                <TranslateTransform X="2.329"/>
-            </TransformGroup>
-        </ScrollViewer.RenderTransform>
-        <Grid Margin="0" >
-            <!-- Background Gradient -->
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#0F2027" Offset="0" />
-                    <GradientStop Color="#203A43" Offset="0.5" />
-                    <GradientStop Color="#2C5364" Offset="1" />
-                </LinearGradientBrush>
-            </Grid.Background>
 
-            <Grid.ColumnDefinitions>
-                <!-- Side Menu Column -->
-                <ColumnDefinition Width="200" />
-                <!-- Main Content Column -->
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <!-- Background Gradient -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0F2027" Offset="0" />
+                <GradientStop Color="#203A43" Offset="0.5" />
+                <GradientStop Color="#2C5364" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
 
-            <Border Grid.Column="0" Background="#23272A" CornerRadius="15" Margin="10" Padding="10" Opacity="0.95">
-                <StackPanel VerticalAlignment="Stretch">
-                    <Image Source="\Assets\logo.png" Width="180" Height="90" />
+        <Grid.ColumnDefinitions>
+            <!-- Side Menu Column -->
+            <ColumnDefinition Width="200" />
+            <!-- Main Content Column -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-                    <TextBlock x:Name="LoggedUser" FontFamily="Raleway" Foreground="#00FFFF" FontSize="18" TextAlignment="Center"
-                               VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,20" />
+        <!-- Modern Side Menu with Buttons -->
+        <Border Grid.Column="0" Background="#23272A" CornerRadius="15" Margin="10" Padding="10" Opacity="0.95">
+            <StackPanel VerticalAlignment="Stretch">
+                <!-- Logo Image -->
+                <Image Source="\Assets\logo.png" Width="180" Height="90" />
+                <!-- Username Text -->
+                <TextBlock x:Name="LoggedUser" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="#00FFFF" FontSize="18" TextAlignment="Center" Margin="0,20,0,20" />
 
-                    <!-- Menu Buttons -->
-                    <Button x:Name="btnPatientInfo" Content="Patient Info" FontFamily="Raleway" Style="{StaticResource ModernMenuButtonStyle}" />
-                    <Button x:Name="btnLogout" Content="Logout" FontFamily="Raleway" Background="#00BFFF" Foreground="White" 
-                            Style="{StaticResource ModernMenuButtonStyle}" />
+                <!-- Menu Buttons styled using ModernMenuButtonStyle -->
+                <Button x:Name="btnHome" Content="Home" Style="{StaticResource ModernMenuButtonStyle}" Click="btnHome_Click"/>
+                <Button x:Name="btnPatientList" Content="Patient List" Style="{StaticResource ModernMenuButtonStyle}" Click="btnPatientList_Click"/>
+                <Button x:Name="btnCaregiverInfo" Content="Caregiver Info" Style="{StaticResource ModernMenuButtonStyle}" Click="btnCaregiverInfo_Click"/>
+                <Button x:Name="btnMar" Content="Mar" Style="{StaticResource ModernMenuButtonStyle}" Click="btnMar_Click"/>
+                <Button x:Name="btnSchedule" Content="Schedule" Style="{StaticResource ModernMenuButtonStyle}" Click="btnSchedule_Click"/>
+                <Button x:Name="btnReport" Content="Report" Style="{StaticResource ModernMenuButtonStyle}" Click="btnReport_Click"/>
+                <Button x:Name="btnLogout" Content="Logout" Background="#00BFFF" Foreground="White" Style="{StaticResource ModernMenuButtonStyle}" Click="btnLogout_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content Area with ScrollViewer -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10">
+            <StackPanel>
+                <!-- Title -->
+                <TextBlock Text="Patient Details Form" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" FontSize="25" Foreground="#FFFFFF" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+
+                <!-- Buttons at the top for navigating sections -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <Button Content="Personal Information" FontFamily="Raleway" FontWeight="Thin" Foreground="White" FontSize="13" Click="ScrollToPersonalInfo"/>
+                    <Button Content="Insurance Information" FontFamily="Raleway" FontWeight="Thin" Foreground="White" FontSize="13" Margin="10,0,0,0" Click="ScrollToInsuranceInfo"/>
+                    <Button Content="Priorities" FontFamily="Raleway" FontWeight="Thin" Foreground="White" FontSize="13" Margin="10,0,0,0" Click="ScrollToPriorities"/>
+                    <Button Content="Services" FontFamily="Raleway" FontWeight="Thin" Foreground="White" FontSize="13" Margin="10,0,0,0" Click="ScrollToServices"/>
+                    <Button Content="Home Management" FontFamily="Raleway" FontWeight="Thin" Foreground="White" FontSize="13" Margin="10,0,0,0" Click="ScrollToHomeManagement"/>
                 </StackPanel>
-            </Border>
 
-            <!-- Main Content Area -->
-            <Grid Grid.Column="1" Margin="10">
-                <StackPanel Margin="10">
+                <!-- GroupBox for Personal Information -->
+                <GroupBox  x:Name="PersonalInfoGroupBox" Header="PERSONAL INFORMATION" FontFamily="pack://application:,,,/Fonts/#Raleway Bold"
+    FontSize="15" Foreground="White" Margin="0,20,0,10">
+                    <StackPanel>
+                        <!-- Patient ID -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Patient ID: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
+Foreground="White" Width="150"/>
+                            <TextBox x:Name="txtPatientId" FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
+Foreground="White" Width="200"/>
+                        </StackPanel>
 
+                        <!-- Patient Name -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Name: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
+Foreground="White" Width="150"/>
+                            <TextBox x:Name="txtName" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
+                        </StackPanel>
 
-                    <!-- Title -->
-                    <TextBlock Text="Patient Details Form"  FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
-      FontSize="25" Foreground="#FFFFFF" Margin="0,0,0,20" 
-                               HorizontalAlignment="Center"/>
+                        <!-- Patient Age -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Age: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" FontWeight="Light" Width="150"/>
+                            <TextBox x:Name="txtAge" FontFamily="Raleway" Foreground="White" Width="100"/>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-                        <Button Content="Personal Information" FontFamily="Raleway" Click="ScrollToPersonalInfo" />
-                        <Button Content="Insurance Information" FontFamily="Raleway" Margin="10,0,0,0" Click="ScrollToInsuranceInfo" />
-                        <Button Content="Priorities" FontFamily="Raleway" Margin="10,0,0,0" Click="ScrollToPriorities" />
-                        <Button Content="Services" FontFamily="Raleway" Margin="10,0,0,0" Click="ScrollToServices" />
+                        <!-- Patient Birthdate with DatePicker -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Date of Birth: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
+                            <DatePicker x:Name="dpBirthdate" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
+                        </StackPanel>
 
+                        <!-- Patient Height -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Height: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
+                            <TextBox x:Name="txtHeight" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="100"/>
+                        </StackPanel>
                     </StackPanel>
+                </GroupBox>
 
-                    <!-- GroupBox for Personal Information -->
-                    <GroupBox  x:Name="PersonalInfoGroupBox" Header="Personal Information" FontFamily="pack://application:,,,/Fonts/#Raleway Bold"
-     FontSize="18" Foreground="White" Margin="0,20,0,10">
-                        <StackPanel>
-                            <!-- Patient ID -->
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Patient ID: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
-     Foreground="White" Width="150"/>
-                                <TextBox x:Name="txtPatientId" FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
-     Foreground="White" Width="200"/>
-                            </StackPanel>
 
-                            <!-- Patient Name -->
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Name: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin"
-     Foreground="White" Width="150"/>
-                                <TextBox x:Name="txtName" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
-                            </StackPanel>
 
-                            <!-- Patient Age -->
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Age: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" FontWeight="Light" Width="150"/>
-                                <TextBox x:Name="txtAge" FontFamily="Raleway" Foreground="White" Width="100"/>
-                            </StackPanel>
-
-                            <!-- Patient Birthdate with DatePicker -->
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Date of Birth: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
-                                <DatePicker x:Name="dpBirthdate" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
-                            </StackPanel>
-
-                            <!-- Patient Height -->
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Height: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
-                                <TextBox x:Name="txtHeight" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="Black" Width="100"/>
-                            </StackPanel>
+                <!-- GroupBox for Insurance Information -->
+                <GroupBox x:Name="InsuranceInfoGroupBox" Header="INSURANCE INFORMATION" FontFamily="pack://application:,,,/Fonts/#Raleway Bold" FontSize="15" Foreground="White" Margin="0,20,0,10">
+                    <StackPanel>
+                        <!-- Primary Insurance -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Primary Insurance: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
+                            <TextBox x:Name="txtPrimaryInsurance" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
                         </StackPanel>
-                    </GroupBox>
 
-
-                    <!-- GroupBox for Insurance Information -->
-                    <GroupBox x:Name="InsuranceInfoGroupBox" Header="Insurance Information" FontFamily="pack://application:,,,/Fonts/#Raleway Bold" FontSize="18" Foreground="White" Margin="0,20,0,10">
-                        <StackPanel>
-                            <!-- Primary Insurance -->
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Primary Insurance: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
-                                <TextBox x:Name="txtPrimaryInsurance" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
-                            </StackPanel>
-
-
-
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="ID Number:" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="178"/>
-                                <TextBox x:Name="txtIDNumber" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
-                            </StackPanel>
-
-
-
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Group Number:" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="178"/>
-                                <TextBox x:Name="txtGroupNumber" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
-                            </StackPanel>
-
-
-
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Policy Holder Name:" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="178"/>
-                                <TextBox x:Name="txtPolicyHolder" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
-                            </StackPanel>
-
-
-
-
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                                <TextBlock Text="Insurance Phone Number:" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="236"/>
-                                <TextBox x:Name="txtInsurancePhoneNumber" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
-                            </StackPanel>
-
-
-
-
-
-
-
-
-
+                        <!-- ID Number -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="ID Number: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
+                            <TextBox x:Name="txtIDNumber" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
                         </StackPanel>
-                    </GroupBox>
 
-
-
-
-
-                    <!-- GroupBox for Priorities -->
-                    <GroupBox x:Name="PrioritiesGroupBox" Header="Priorities" FontFamily="pack://application:,,,/Fonts/#Raleway Bold" FontSize="18" Foreground="White" Margin="0,20,0,10">
-                        <StackPanel>
-                            <CheckBox x:Name="chkIsDNR" Content="DNR" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsDNRArrest" Content="DNR- ARREST" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsFullCode" Content="FULL CODE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsComfortMeasOnly" Content="COMFORT MEAS ONLY" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsLivingWill" Content="LIVING WILL" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsPowerOfAttorney" Content="POWER OF ATTORNEY" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsCopyOnFile" Content="COPY ON FILE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsNCFEligible" Content="NCF ELIGIBLE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsFallRisk" Content="FALL RISK" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsHOH" Content="HOH" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsDisoriented" Content="DISORIENTED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsDialysis" Content="DIALYSIS" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsVulnerable" Content="VULNERABLE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsDisabled" Content="DISABLED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsEscortRequired" Content="ESCORT REQUIRED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsFrail" Content="FRAIL" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsAlert" Content="ALERT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <!-- Group Number -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Group Number: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="150"/>
+                            <TextBox x:Name="txtGroupNumber" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
                         </StackPanel>
-                    </GroupBox>
 
-
-                    <GroupBox x:Name="ServicesGroupBox" Header="Services" FontFamily="pack://application:,,,/Fonts/#Raleway Bold" FontSize="18" Foreground="White" Margin="0,20,0,10">
-                        <StackPanel>
-                            <CheckBox x:Name="chkIsSN" Content="SN" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsPT" Content="PT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsOT" Content="OT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsST" Content="ST" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsMSW" Content="MSW" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsHHA" Content="HHA" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsHMKR" Content="HMKR" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsCOMPANION" Content="COMPANION" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsHOUSEKEEPER" Content="HOUSEKEEPER" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsTELE" Content="TELE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsHOMEFRIEND" Content="HOMEFRIEND" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsNUTRITION" Content="NUTRITION" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsIV" Content="IV" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsRESPITE" Content="RESPITE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsCHAPLIN" Content="CHAPLIN" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
-                            <CheckBox x:Name="chkIsMUSIC" Content="MUSIC" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <!-- Policy Holder Name -->
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Policy Holder Name: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="173"/>
+                            <TextBox x:Name="txtPolicyHolder" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
                         </StackPanel>
-                    </GroupBox>
+
+                        <!-- Insurance Phone Number -->
+                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                            <TextBlock Text="Insurance Phone Number: " FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="218"/>
+                            <TextBox x:Name="txtInsurancePhoneNumber" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Width="200"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- GroupBox for Priorities -->
+                <GroupBox x:Name="PrioritiesGroupBox" Header="PRIORITIES" FontFamily="pack://application:,,,/Fonts/#Raleway Bold" FontSize="15" Foreground="White" Margin="0,20,0,10" Height="291">
+                    <UniformGrid Columns="3" Margin="0,0,0,0">
+                        <CheckBox x:Name="chkIsDNR" Content="DNR" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsDNRArrest" Content="DNR- ARREST" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsFullCode" Content="FULL CODE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsComfortMeasOnly" Content="COMFORT MEAS ONLY" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsLivingWill" Content="LIVING WILL" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsPowerOfAttorney" Content="POWER OF ATTORNEY" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5" Checked="chkIsPowerOfAttorney_Checked"/>
+                        <CheckBox x:Name="chkIsCopyOnFile" Content="COPY ON FILE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsNCFEligible" Content="NCF ELIGIBLE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsFallRisk" Content="FALL RISK" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsHOH" Content="HOH" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsDisoriented" Content="DISORIENTED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsDialysis" Content="DIALYSIS" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsVulnerable" Content="VULNERABLE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsDisabled" Content="DISABLED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsEscortRequired" Content="ESCORT REQ'D" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsFrail" Content="FRAIL" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsAlert" Content="ALERT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
 
 
 
 
 
+
+
+                    </UniformGrid>
+                </GroupBox>
+
+                <!-- GroupBox for Services -->
+                <GroupBox x:Name="ServicesGroupBox" Header="SERVICES" FontFamily="pack://application:,,,/Fonts/#Raleway Bold" FontSize="15" Foreground="White" Margin="0,20,0,10">
+                    <UniformGrid Columns="3" Margin="0,0,0,0">
+                        <CheckBox x:Name="chkIsSN" Content="SN" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsPT" Content="PT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsOT" Content="OT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsST" Content="ST" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsMSW" Content="MSW" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsHHA" Content="HHA" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsHMKR" Content="HMKR" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsCompanion" Content="COMPANION" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIshousekeeper" Content="HOUSEKEEPER" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsTeleReasurance" Content="TELEREASURANCE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsHomefriend" Content="HOMEFRIEND" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsNutrition" Content="NUTRITION" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsIV" Content="IV" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsRespite" Content="RESPITE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsChaplin" Content="CHAPLIN" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsMusic" Content="MUSIC" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+
+                    </UniformGrid>
+                </GroupBox>
+
+                <!-- GroupBox for Home Management -->
+                <GroupBox x:Name="HomeManagementGroupBox" Header="HOME MANAGEMENT" FontFamily="pack://application:,,,/Fonts/#Raleway Bold" FontSize="15" Foreground="White" Margin="0,20,0,10" Height="215">
+                    <UniformGrid Columns="3" Margin="0">
+                        <CheckBox x:Name="chkIsAmbulation" Content="AMBULATION" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsHearing" Content="HEARING" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsVision" Content="VISION" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsSpeech" Content="SPEECH" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsOriented" Content="ORIENTED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsPleasant" Content="PLEASANT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsPassive" Content="PASSIVE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsDepressed" Content="DEPRESSED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsAgitated" Content="AGITATED" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsHostile" Content="HOSTILE" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsParalysis" Content="Paralysis" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsCat" Content="CAT" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsDog" Content="DOG" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsSmokes" Content="SMOKES" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+                        <CheckBox x:Name="chkIsOther" Content="OTHER" FontFamily="pack://application:,,,/Fonts/#Raleway Thin" Foreground="White" Margin="5"/>
+
+
+
+
+
+                    </UniformGrid>
+                </GroupBox>
+
+                <!-- Submit and Reset Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Button x:Name="btnSubmit" Content="Submit" Style="{StaticResource ModernMenuButtonStyle}" Click="SubmitButton_Click"/>
+                    <Button x:Name="btnReset" Content="Reset" Style="{StaticResource ModernMenuButtonStyle}" Click="ResetButton_Click"/>
                 </StackPanel>
-            </Grid>
-        </Grid>
-    </ScrollViewer>
 
-</Window>
+
+                <Popup x:Name="SubmitPopup" Placement="Center" StaysOpen="False">
+                    <Border Background="#2C2F33" CornerRadius="8" Padding="20" BorderBrush="#7289DA" BorderThickness="1">
+                        <TextBlock Text="Submission Successful!" Foreground="White" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                    </Border>
+                  </Popup>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+    
+    
+</Window>  
